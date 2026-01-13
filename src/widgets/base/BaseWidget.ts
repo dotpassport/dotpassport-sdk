@@ -19,6 +19,7 @@ export abstract class BaseWidget<
     error: null,
     data: null,
   };
+  protected abortController: AbortController | null = null;
 
   constructor(config: TConfig) {
     this.config = config;
@@ -26,6 +27,8 @@ export abstract class BaseWidget<
       apiKey: config.apiKey,
       baseUrl: config.baseUrl,
     });
+    // Widgets now use consolidated /widget/:type/:address endpoints
+    // No need for query parameter interceptor
   }
 
   /**
@@ -34,6 +37,10 @@ export abstract class BaseWidget<
    */
   async mount(selector: string | HTMLElement): Promise<void> {
     try {
+      // Cancel any previous pending requests
+      this.abortController?.abort();
+      this.abortController = new AbortController();
+
       // Resolve container
       this.container = resolveContainer(selector);
 
@@ -58,6 +65,11 @@ export abstract class BaseWidget<
           this.config.onLoad();
         }
       } catch (error) {
+        // Ignore abort errors - they're expected when widget is unmounted
+        if ((error as Error).name === 'AbortError' || (error as Error).name === 'CanceledError') {
+          return;
+        }
+
         this.state.loading = false;
         this.state.error = error as Error;
         this.updateDOM();
@@ -143,8 +155,13 @@ export abstract class BaseWidget<
 
   /**
    * Destroy the widget and clean up
+   * Cancels any pending API requests
    */
   destroy(): void {
+    // Abort any pending requests
+    this.abortController?.abort();
+    this.abortController = null;
+
     if (this.container) {
       this.container.innerHTML = '';
       if (this.config.className) {
@@ -161,6 +178,22 @@ export abstract class BaseWidget<
   }
 
   /**
+   * Unmount the widget (alias for destroy)
+   * Cancels any pending API requests
+   */
+  unmount(): void {
+    this.destroy();
+  }
+
+  /**
+   * Get the AbortSignal for use in fetch operations
+   * @returns AbortSignal or undefined if no controller exists
+   */
+  protected getAbortSignal(): AbortSignal | undefined {
+    return this.abortController?.signal;
+  }
+
+  /**
    * Update the DOM with current state
    */
   protected updateDOM(): void {
@@ -171,7 +204,13 @@ export abstract class BaseWidget<
     } else if (this.state.error) {
       this.container.innerHTML = this.renderError();
     } else if (this.state.data) {
-      this.container.innerHTML = this.render();
+      try {
+        this.container.innerHTML = this.render();
+      } catch (renderError) {
+        console.error(`[${this.getWidgetType()}Widget] Render error:`, renderError);
+        this.state.error = renderError as Error;
+        this.container.innerHTML = this.renderError();
+      }
     }
   }
 
@@ -196,9 +235,13 @@ export abstract class BaseWidget<
   protected renderError(): string {
     const theme = resolveTheme(this.config.theme);
     const error = this.state.error;
+    // Show actual error message for all error types to help debugging
     const message = error instanceof DotPassportError
       ? error.message
-      : 'An unexpected error occurred';
+      : error?.message || 'An unexpected error occurred';
+
+    // Log error for debugging
+    console.error(`[${this.getWidgetType()}Widget] Error:`, error);
 
     return `
       <div class="dp-widget dp-theme-${theme}">
@@ -226,6 +269,12 @@ export abstract class BaseWidget<
   protected getTheme(): 'light' | 'dark' {
     return resolveTheme(this.config.theme);
   }
+
+  /**
+   * Abstract method to get widget type for logging
+   * Must be implemented by subclasses
+   */
+  protected abstract getWidgetType(): string;
 
   /**
    * Abstract method to fetch widget data

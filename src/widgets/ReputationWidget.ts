@@ -9,10 +9,17 @@ import { renderReputationTemplate } from './templates/reputation';
  */
 export class ReputationWidget extends BaseWidget<ReputationWidgetConfig, UserScores> {
   /**
-   * Fetch reputation scores from API
+   * Fetch reputation scores from API using consolidated widget endpoint
    */
   protected async fetchData(): Promise<UserScores> {
-    return await this.client.getScores(this.config.address);
+    return await this.client.getWidgetReputation(this.config.address, this.getAbortSignal());
+  }
+
+  /**
+   * Get widget type for logging
+   */
+  protected getWidgetType(): string {
+    return 'reputation';
   }
 
   /**
@@ -32,7 +39,7 @@ export class ReputationWidget extends BaseWidget<ReputationWidgetConfig, UserSco
 
     return renderReputationTemplate({
       totalScore,
-      categories,
+      categories: categories || {},
       showCategories,
       maxCategories,
       compact,

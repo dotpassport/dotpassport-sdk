@@ -64,10 +64,18 @@ export interface CategoryWidgetConfig extends BaseWidgetConfig {
   type: 'category';
   /** Category key to display */
   categoryKey: string;
+  /** Show category title/name */
+  showTitle?: boolean;
+  /** Show category description */
+  showDescription?: boolean;
   /** Show score breakdown/reasons */
   showBreakdown?: boolean;
-  /** Show advice for improvement */
+  /** Show advice/tips for improvement */
   showAdvice?: boolean;
+  /** Show only the score (minimal view) */
+  showScoreOnly?: boolean;
+  /** Compact mode (smaller layout) */
+  compact?: boolean;
 }
 
 /**

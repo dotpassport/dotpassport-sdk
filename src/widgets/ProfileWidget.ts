@@ -9,10 +9,17 @@ import { renderProfileTemplate } from './templates/profile';
  */
 export class ProfileWidget extends BaseWidget<ProfileWidgetConfig, UserProfile> {
   /**
-   * Fetch profile from API
+   * Fetch profile from API using consolidated widget endpoint
    */
   protected async fetchData(): Promise<UserProfile> {
-    return await this.client.getProfile(this.config.address);
+    return await this.client.getWidgetProfile(this.config.address, this.getAbortSignal());
+  }
+
+  /**
+   * Get widget type for logging
+   */
+  protected getWidgetType(): string {
+    return 'profile';
   }
 
   /**

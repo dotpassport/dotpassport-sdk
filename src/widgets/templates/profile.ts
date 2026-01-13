@@ -21,8 +21,8 @@ export function renderProfileTemplate(options: ProfileTemplateOptions): string {
       <style>${getWidgetStyles()}</style>
       ${renderProfileHeader(profile)}
       ${showBio && profile.bio ? renderBio(profile.bio) : ''}
-      ${showSocials ? renderSocials(profile.socialLinks) : ''}
-      ${showIdentities ? renderIdentities(profile.polkadotIdentities) : ''}
+      ${showSocials && profile.socialLinks ? renderSocials(profile.socialLinks) : ''}
+      ${showIdentities && profile.polkadotIdentities ? renderIdentities(profile.polkadotIdentities) : ''}
     </div>
   `;
 }
@@ -57,6 +57,32 @@ function renderBio(bio: string): string {
 }
 
 /**
+ * Get social media platform URL
+ */
+function getSocialUrl(platform: string, value: string): string {
+  // If value is already a full URL, return it as-is
+  if (value.startsWith('http://') || value.startsWith('https://')) {
+    return value;
+  }
+
+  // Map platform names to their URL patterns
+  const platformMappings: Record<string, string> = {
+    twitter: 'https://twitter.com/',
+    github: 'https://github.com/',
+    linkedin: 'https://linkedin.com/in/',
+    discord: 'https://discord.com/users/',
+    telegram: 'https://t.me/',
+    instagram: 'https://instagram.com/',
+    reddit: 'https://reddit.com/u/',
+    facebook: 'https://facebook.com/',
+    youtube: 'https://youtube.com/@',
+  };
+
+  const baseUrl = platformMappings[platform.toLowerCase()];
+  return baseUrl ? `${baseUrl}${value}` : value;
+}
+
+/**
  * Render social links
  */
 function renderSocials(socialLinks: Record<string, string>): string {
@@ -67,8 +93,8 @@ function renderSocials(socialLinks: Record<string, string>): string {
   }
 
   const socialsHtml = links
-    .map(([platform, url]) => `
-      <a href="${escapeHtml(url)}" class="dp-social-link" target="_blank" rel="noopener">
+    .map(([platform, value]) => `
+      <a href="${escapeHtml(getSocialUrl(platform, value))}" class="dp-social-link" target="_blank" rel="noopener">
         ${escapeHtml(capitalizeFirst(platform))}
       </a>
     `)

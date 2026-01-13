@@ -12,10 +12,17 @@ export interface ApiResponse<T> {
 export interface PolkadotIdentity {
   address: string;
   display?: string;
+  legal?: string;
   web?: string;
+  email?: string;
   twitter?: string;
   github?: string;
-  judgements?: Array<{ index: number; judgement: string }>;
+  matrix?: string;
+  discord?: string;
+  riot?: string;
+  judgements?: Array<{ index: number; judgement: string; _id?: string }>;
+  role?: string;
+  nonce?: number;
 }
 
 export interface UserProfile {
@@ -23,8 +30,10 @@ export interface UserProfile {
   displayName?: string;
   avatarUrl?: string;
   bio?: string;
-  socialLinks: Record<string, string>;
-  polkadotIdentities: PolkadotIdentity[];
+  socialLinks?: Record<string, string>;
+  polkadotIdentities?: PolkadotIdentity[];
+  nftCount?: number;
+  source?: 'app' | 'api';
 }
 
 /**
@@ -40,7 +49,8 @@ export interface UserScores {
   address: string;
   totalScore: number;
   calculatedAt: string;
-  categories: Record<string, CategoryScore>;
+  categories?: Record<string, CategoryScore>;
+  source?: 'app' | 'api';
 }
 
 export interface SpecificCategoryScore {
@@ -61,19 +71,22 @@ export interface UserBadge {
   achievedLevel: number;
   achievedLevelKey: string;
   achievedLevelTitle: string;
-  earnedAt: string;
+  earnedAt?: string;
 }
 
 export interface UserBadges {
   address: string;
   badges: UserBadge[];
   count: number;
+  source?: 'app' | 'api';
 }
 
 export interface SpecificUserBadge {
   address: string;
-  badge: UserBadge;
+  badge: UserBadge | null;
+  earned?: boolean;
   definition: BadgeDefinition | null;
+  source?: 'app' | 'api';
 }
 
 /**

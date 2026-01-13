@@ -9,13 +9,21 @@ import { renderCategoryTemplate } from './templates/category';
  */
 export class CategoryWidget extends BaseWidget<CategoryWidgetConfig, SpecificCategoryScore> {
   /**
-   * Fetch category score from API
+   * Fetch category score from API using consolidated widget endpoint
    */
   protected async fetchData(): Promise<SpecificCategoryScore> {
-    return await this.client.getCategoryScore(
+    return await this.client.getWidgetCategory(
       this.config.address,
-      this.config.categoryKey
+      this.config.categoryKey,
+      this.getAbortSignal()
     );
+  }
+
+  /**
+   * Get widget type for logging
+   */
+  protected getWidgetType(): string {
+    return 'category';
   }
 
   /**
@@ -27,14 +35,22 @@ export class CategoryWidget extends BaseWidget<CategoryWidgetConfig, SpecificCat
     }
 
     const {
+      showTitle = true,
+      showDescription = true,
       showBreakdown = true,
       showAdvice = true,
+      showScoreOnly = false,
+      compact = false,
     } = this.config;
 
     return renderCategoryTemplate({
       categoryData: this.state.data,
+      showTitle,
+      showDescription,
       showBreakdown,
       showAdvice,
+      showScoreOnly,
+      compact,
       theme: this.getTheme(),
     });
   }
