@@ -13,7 +13,7 @@
 [![Tests](https://img.shields.io/badge/Tests-236%20passed-success?style=flat-square)](./src/__tests__)
 [![Coverage](https://img.shields.io/badge/Coverage-86%25-success?style=flat-square)](./)
 
-[Getting Started](#-quick-start) • [API Reference](#-api-client) • [Widgets](#-embeddable-widgets) • [Examples](#-examples) • [Contributing](#-contributing)
+[Getting Started](#quick-start) • [API Reference](#api-client) • [Widgets](#embeddable-widgets) • [Examples](#examples) • [Contributing](#contributing)
 
 </div>
 
@@ -32,23 +32,23 @@ This SDK provides:
 
 ## Table of Contents
 
-- [Quick Start](#-quick-start)
-- [Installation](#-installation)
-- [Environment Configuration](#-environment-configuration)
-- [Features](#-features)
-- [API Client](#-api-client)
-- [Embeddable Widgets](#-embeddable-widgets)
-- [Widget Gallery](#-widget-gallery)
-- [Configuration Reference](#-configuration-reference)
-- [Framework Integration](#-framework-integration)
-- [Wallet Integration](#-wallet-integration)
-- [Error Handling](#-error-handling)
-- [TypeScript Support](#-typescript-support)
-- [Examples](#-examples)
-- [Testing](#-testing)
-- [Contributing](#-contributing)
-- [Author](#-author)
-- [License](#-license)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Environment Configuration](#environment-configuration)
+- [Features](#features)
+- [API Client](#api-client)
+- [Embeddable Widgets](#embeddable-widgets)
+- [Widget Gallery](#widget-gallery)
+- [Configuration Reference](#configuration-reference)
+- [Framework Integration](#framework-integration)
+- [Wallet Integration](#wallet-integration)
+- [Error Handling](#error-handling)
+- [TypeScript Support](#typescript-support)
+- [Examples](#examples)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [Author](#author)
+- [License](#license)
 
 ---
 
