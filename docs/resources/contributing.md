@@ -249,7 +249,7 @@ Releases are managed by maintainers:
 
 - **Discord:** [Join our community](https://discord.gg/dotpassport)
 - **GitHub Issues:** Report bugs or request features
-- **Email:** dev@dotpassport.xyz
+- **Email:** dev@dotpassport.io
 
 ---
 

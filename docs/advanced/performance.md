@@ -252,8 +252,8 @@ Add preconnect hints for faster initial loads:
 ```html
 <head>
   <!-- Preconnect to API server -->
-  <link rel="preconnect" href="https://api.dotpassport.xyz" />
-  <link rel="dns-prefetch" href="https://api.dotpassport.xyz" />
+  <link rel="preconnect" href="https://api.dotpassport.io" />
+  <link rel="dns-prefetch" href="https://api.dotpassport.io" />
 </head>
 ```
 

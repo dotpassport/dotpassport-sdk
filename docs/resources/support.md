@@ -101,7 +101,7 @@ const config: WidgetConfig = {
 
 ### How do I get an API key?
 
-1. Sign up at [dotpassport.xyz](https://dotpassport.xyz)
+1. Sign up at [dotpassport.io](https://dotpassport.io)
 2. Navigate to Developer Settings
 3. Create a new API key
 4. Copy and store securely
@@ -137,7 +137,7 @@ Reputation scores are updated:
 ### Is there a sandbox/test environment?
 
 Yes, use the sandbox API:
-- Endpoint: `https://sandbox-api.dotpassport.xyz`
+- Endpoint: `https://sandbox-api.dotpassport.io`
 - Use test API keys for development
 
 ---
@@ -159,9 +159,9 @@ Join our Discord for community support:
 ### Email Support
 
 For private inquiries:
-- General: support@dotpassport.xyz
-- Security: security@dotpassport.xyz
-- Partnerships: partners@dotpassport.xyz
+- General: support@dotpassport.io
+- Security: security@dotpassport.io
+- Partnerships: partners@dotpassport.io
 
 ### Response Times
 
@@ -181,14 +181,14 @@ For enterprise customers:
 - Custom SLAs available
 - Integration assistance
 
-Contact: enterprise@dotpassport.xyz
+Contact: enterprise@dotpassport.io
 
 ---
 
 ## Status Page
 
 Check service status:
-- [status.dotpassport.xyz](https://status.dotpassport.xyz)
+- [status.dotpassport.io](https://status.dotpassport.io)
 
 Subscribe to updates for:
 - API outages
@@ -204,7 +204,7 @@ Found a security vulnerability?
 **Do not** create public GitHub issues.
 
 Instead:
-1. Email security@dotpassport.xyz
+1. Email security@dotpassport.io
 2. Include detailed reproduction steps
 3. Allow reasonable time for fix
 4. Coordinate disclosure

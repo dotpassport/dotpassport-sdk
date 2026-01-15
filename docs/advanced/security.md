@@ -156,7 +156,7 @@ Add appropriate CSP headers:
   default-src 'self';
   script-src 'self' 'unsafe-inline';
   style-src 'self' 'unsafe-inline';
-  connect-src 'self' https://api.dotpassport.xyz;
+  connect-src 'self' https://api.dotpassport.io;
   img-src 'self' data: https:;
 ">
 ```
@@ -309,7 +309,7 @@ app.get('/api/reputation/:address', async (req, res) => {
 If you discover a security vulnerability in the SDK:
 
 1. **Do not** disclose publicly
-2. Email security@dotpassport.xyz
+2. Email security@dotpassport.io
 3. Include detailed reproduction steps
 4. Allow reasonable time for fix before disclosure
 

@@ -224,7 +224,7 @@ import { DotPassportClient } from '@dotpassport/sdk';
 
 const client = new DotPassportClient({
   apiKey: 'live_your_api_key_here',    // Required
-  baseUrl: 'https://api.dotpassport.xyz', // Optional (default)
+  baseUrl: 'https://api.dotpassport.io', // Optional (default)
   headers: {                            // Optional custom headers
     'X-Custom-Header': 'value'
   }
@@ -1153,8 +1153,8 @@ copies of the Software...
 | Resource | Link |
 |----------|------|
 | 📦 NPM Package | [npmjs.com/@dotpassport/sdk](https://www.npmjs.com/package/@dotpassport/sdk) |
-| 📖 Documentation | [docs.dotpassport.xyz](https://docs.dotpassport.xyz) |
-| 🌐 Website | [dotpassport.xyz](https://dotpassport.xyz) |
+| 📖 Documentation | [docs.dotpassport.io](https://docs.dotpassport.io) |
+| 🌐 Website | [dotpassport.io](https://dotpassport.io) |
 | 🐛 Issues | [GitHub Issues](https://github.com/SachinCoder1/dotpassport-sdk/issues) |
 | 💬 Discord | [Join our community](https://discord.gg/dotpassport) |
 
