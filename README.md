@@ -52,7 +52,7 @@ This SDK provides:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Install the SDK
 
@@ -94,7 +94,7 @@ console.log(`Total Score: ${scores.totalScore}`);
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### NPM / Yarn / PNPM
 
@@ -127,9 +127,9 @@ pnpm add @dotpassport/sdk
 
 ---
 
-## 🔧 Environment Configuration
+## Environment Configuration
 
-By default, the SDK connects to the **production API** (`https://api.dotpassport.com`). For local development, you have several options:
+By default, the SDK connects to the **production API** (`https://api.dotpassport.io`). For local development, you have several options:
 
 ### Option 1: Global Configuration (Recommended for Development)
 
@@ -140,7 +140,7 @@ import { setDefaultBaseUrl, LOCAL_URL } from '@dotpassport/sdk';
 setDefaultBaseUrl(LOCAL_URL); // 'http://localhost:4000'
 
 // Or use a custom URL
-setDefaultBaseUrl('https://staging.dotpassport.com');
+setDefaultBaseUrl('https://staging.dotpassport.io');
 ```
 
 ### Option 2: Per-Client Configuration
@@ -171,7 +171,7 @@ import {
   resetToProductionUrl,
   isLocalMode,
   LOCAL_URL,        // 'http://localhost:4000'
-  PRODUCTION_URL    // 'https://api.dotpassport.com'
+  PRODUCTION_URL    // 'https://api.dotpassport.io'
 } from '@dotpassport/sdk';
 
 // Check current mode
@@ -183,7 +183,7 @@ resetToProductionUrl();
 
 ---
 
-## ✨ Features
+## Features
 
 ### 🔌 Complete API Coverage
 Access all DotPassport endpoints including profiles, scores, badges, and metadata.
@@ -213,7 +213,7 @@ Smart caching for widget data with configurable TTL to minimize API calls.
 
 ---
 
-## 📡 API Client
+## API Client
 
 The `DotPassportClient` provides programmatic access to all DotPassport API endpoints.
 
@@ -224,7 +224,7 @@ import { DotPassportClient } from '@dotpassport/sdk';
 
 const client = new DotPassportClient({
   apiKey: 'live_your_api_key_here',    // Required
-  baseUrl: 'https://api.dotpassport.io', // Optional (default)
+  baseUrl: 'https://api.dotpassport.xyz', // Optional (default)
   headers: {                            // Optional custom headers
     'X-Custom-Header': 'value'
   }
@@ -324,7 +324,7 @@ const scores = await client.getScores(address, { signal: controller.signal });
 
 ---
 
-## 🎨 Embeddable Widgets
+## Embeddable Widgets
 
 DotPassport SDK includes four beautiful, customizable widgets that work with any framework.
 
@@ -339,7 +339,7 @@ DotPassport SDK includes four beautiful, customizable widgets that work with any
 
 ---
 
-## 🖼️ Widget Gallery
+## Widget Gallery
 
 ### Reputation Widget
 *Displays total reputation score with category breakdown*
@@ -450,7 +450,7 @@ createWidget({
 
 ---
 
-## ⚙️ Configuration Reference
+## Configuration Reference
 
 ### Common Widget Options
 
@@ -502,7 +502,7 @@ createWidget({
 
 ---
 
-## 🔗 Framework Integration
+## Framework Integration
 
 ### React
 
@@ -664,7 +664,7 @@ watch(
 
 ---
 
-## 🔐 Wallet Integration
+## Wallet Integration
 
 Connect DotPassport SDK with popular Polkadot wallets to display reputation data for connected users.
 
@@ -799,7 +799,7 @@ function App() {
 
 ---
 
-## 🎨 Custom Styling
+## Custom Styling
 
 Widgets support CSS variable overrides for custom styling:
 
@@ -829,7 +829,7 @@ Widgets support CSS variable overrides for custom styling:
 
 ---
 
-## ❌ Error Handling
+## Error Handling
 
 The SDK provides structured error handling through `DotPassportError`:
 
@@ -877,7 +877,7 @@ try {
 
 ---
 
-## 📘 TypeScript Support
+## TypeScript Support
 
 The SDK is written in TypeScript with complete type definitions.
 
@@ -928,7 +928,7 @@ badges.badges[0].badgeKey; // ✅ string
 
 ---
 
-## 📖 Examples
+## Examples
 
 ### Complete Dashboard Example
 
@@ -1023,7 +1023,7 @@ window.addEventListener('beforeunload', () => {
 
 ---
 
-## 🧪 Testing
+## Testing
 
 The SDK includes comprehensive test coverage with 236+ tests.
 
@@ -1057,7 +1057,7 @@ npm run test:integration
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
@@ -1113,7 +1113,7 @@ refactor: improve widget rendering performance
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 <div align="center">
   <img src="https://github.com/SachinCoder1.png" width="100" style="border-radius: 50%;" alt="Sachin" />
@@ -1128,7 +1128,7 @@ refactor: improve widget rendering performance
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
 
@@ -1146,15 +1146,15 @@ copies of the Software...
 
 ---
 
-## 🔗 Links
+## Links
 
 <div align="center">
 
 | Resource | Link |
 |----------|------|
 | 📦 NPM Package | [npmjs.com/@dotpassport/sdk](https://www.npmjs.com/package/@dotpassport/sdk) |
-| 📖 Documentation | [docs.dotpassport.io](https://docs.dotpassport.io) |
-| 🌐 Website | [dotpassport.io](https://dotpassport.io) |
+| 📖 Documentation | [docs.dotpassport.xyz](https://docs.dotpassport.xyz) |
+| 🌐 Website | [dotpassport.xyz](https://dotpassport.xyz) |
 | 🐛 Issues | [GitHub Issues](https://github.com/SachinCoder1/dotpassport-sdk/issues) |
 | 💬 Discord | [Join our community](https://discord.gg/dotpassport) |
 
